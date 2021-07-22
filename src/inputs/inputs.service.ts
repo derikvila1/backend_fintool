@@ -15,9 +15,12 @@ export class InputsService {
   async findAll(): Promise<Inputs[]> {
     return this.inputsRepository.find();
   }
+  async deletar (id : number):Promise<any>{
+    return this.inputsRepository.delete(id);
+  };
 
   async cadastrar(data: InputsCreateDto): Promise<resultDto>{
-    let input = new Inputs()
+    let input = new Inputs();
     console.log(data);
     input.userId = data.userId
     input.value = data.value

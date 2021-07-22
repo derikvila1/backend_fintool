@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Delete } from '@nestjs/common';
 import { resultDto } from 'src/dto/result.dto';
 import { InputsCreateDto } from './dto/inputs.create.dto';
 import { Inputs } from './inputs.entity';
@@ -16,7 +16,10 @@ export class InputsController {
   @Post('cadastrar')
   async cadastrar(@Body() data: InputsCreateDto): Promise<resultDto>{
     return this.InputsService.cadastrar(data)
+  }
 
-   
+  @Delete('deletar')
+  async deletar(@Body() id:number): Promise<any>{
+    return this.InputsService.deletar(id);
   }
 }

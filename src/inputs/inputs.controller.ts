@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Delete } from '@nestjs/common';
+import { Body, Controller, Get, Post, Delete, Param, Query } from '@nestjs/common';
 import { resultDto } from 'src/dto/result.dto';
 import { InputsCreateDto } from './dto/inputs.create.dto';
 import { Inputs } from './inputs.entity';
@@ -9,8 +9,8 @@ export class InputsController {
   constructor(private readonly InputsService: InputsService) {}
 
   @Get('listar')
-  async findAll(): Promise<Inputs[]>{
-    return this.InputsService.findAll();
+  async findAll(@Query('id') id:number): Promise<Inputs[]>{
+    return this.InputsService.findAll(id);
   }
 
   @Post('cadastrar')

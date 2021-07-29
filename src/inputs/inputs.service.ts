@@ -12,8 +12,8 @@ export class InputsService {
     private inputsRepository: Repository<Inputs>,
   ) {}
 
-  async findAll(): Promise<Inputs[]> {
-    return this.inputsRepository.find();
+  async findAll(id:number): Promise<Inputs[]> {
+    return this.inputsRepository.find({where:{userId:id}});
   }
   async deletar (id : number):Promise<any>{
     return this.inputsRepository.delete(id);
